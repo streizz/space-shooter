@@ -1,5 +1,5 @@
 import pygame
-from gun import Gun
+from game import Game
 from controls import process_events, update_display
 
 
@@ -8,11 +8,14 @@ def main():
     screen = pygame.display.set_mode((1400, 788))
     pygame.display.set_caption('Космический шутер')
     BLACK = (0, 0, 0)
-    gun = Gun(screen)
+    #clock = pygame.time.Clock()
+    #fps = 100
+    game = Game(screen)
 
     while True:
-        process_events(gun)
-        update_display(screen, gun, BLACK)
+        process_events(game)
+        update_display(screen, game, BLACK)
+        #clock.tick(fps)
 
 
 if __name__ == '__main__':

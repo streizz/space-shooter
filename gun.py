@@ -1,4 +1,5 @@
 import pygame
+from bullet import Bullet
 
 
 class Gun:
@@ -9,18 +10,26 @@ class Gun:
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         self.rect.centerx = self.screen_rect.centerx
+        self.center = float(self.rect.centerx)
         self.rect.bottom = self.screen_rect.bottom
+        self.bullets = pygame.sprite.Group()
         self.mright = False
         self.mleft = False
 
     def render(self):
-        '''отображение пушки'''
+        '''отрисовка пушки'''
         self.move()
         self.screen.blit(self.image, self.rect)
 
     def move(self):
         '''изменение позиции пушки'''
         if self.mright and self.rect.right < self.screen_rect.right:
-            self.rect.centerx += 1.0
-        elif self.mleft and 0 < self.rect.left:
-            self.rect.centerx -= 1.0
+            self.center += 1.5
+        if self.mleft and 0 < self.rect.left:
+            self.center -= 1.5
+        self.rect.centerx = self.center
+
+    def shoot(self):
+        '''функция реализует стрельбу пулями bullets'''
+        bullet = Bullet(self.screen, self)
+        self.bullets.add(bullet)
