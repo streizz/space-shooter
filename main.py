@@ -5,7 +5,7 @@ from controls import process_events, update_display
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((1400, 788))
+    screen = pygame.display.set_mode((500, 900))
     pygame.display.set_caption('Космический шутер')
     BLACK = (0, 0, 0)
     #clock = pygame.time.Clock()

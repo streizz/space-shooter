@@ -6,8 +6,8 @@ class Bullet(pygame.sprite.Sprite):
         '''инициализации пули'''
         super(Bullet, self).__init__()
         self.screen = screen
-        self.rect = pygame.Rect(0, 0, 2, 20)
-        self.color = 255, 0, 0#255, 200, 255
+        self.rect = pygame.Rect(0, 0, 3, 15)
+        self.color = 255, 200, 255
         self.speed = 4.5
         self.rect.centerx = gun.rect.centerx
         self.rect.centery = gun.rect.centery - 50
