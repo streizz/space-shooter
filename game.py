@@ -10,16 +10,31 @@ class Game:
         self.gun = Gun(screen)
         self.inos = pygame.sprite.Group()
         self.create_army()
+        self.guns_count_life = 3
 
     def render(self):
+        if pygame.sprite.spritecollideany(self.gun, self.inos):
+            self.restart_game()
+            return
         self.gun.render()
-        for ino in self.inos.sprites():
-            ino.render()
-        for bullet in self.gun.bullets.sprites().copy():
-            bullet.render()
-            if bullet.rect.bottom <= 0:
-                self.gun.bullets.remove(bullet)
-        pygame.sprite.groupcollide(self.gun.bullets, self.inos, True, True)
+        if self.inos:
+            for ino in self.inos.sprites():
+                ino.render()
+            for bullet in self.gun.bullets.sprites().copy():
+                bullet.render()
+                if bullet.rect.bottom <= 0:
+                    self.gun.bullets.remove(bullet)
+            pygame.sprite.groupcollide(self.gun.bullets, self.inos, True, True)
+        else:
+            self.create_army()
+
+    def restart_game(self):
+        self.guns_count_life -= 1
+        if self.guns_count_life == 0:
+            exit()
+        self.gun = Gun(self.screen)
+        self.inos = pygame.sprite.Group()
+        self.create_army()
 
     def create_army(self):
         ino = Ino(self.screen)

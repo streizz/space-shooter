@@ -1,7 +1,6 @@
 import pygame
 
 
-# поменять название функции
 def process_events(game):
     '''обрабатываем события'''
     for event in pygame.event.get():

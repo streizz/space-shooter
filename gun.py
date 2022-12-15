@@ -24,9 +24,9 @@ class Gun:
     def move(self):
         '''изменение позиции пушки'''
         if self.mright and self.rect.right < self.screen_rect.right:
-            self.center += 1.5
+            self.center += 2.5
         if self.mleft and 0 < self.rect.left:
-            self.center -= 1.5
+            self.center -= 2.5
         self.rect.centerx = self.center
 
     def shoot(self):
