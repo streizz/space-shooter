@@ -22,5 +22,5 @@ def process_events(game):
 
 def update_display(screen, game, background):
     screen.fill(background)
-    game.render()
+    game.update()
     pygame.display.flip()

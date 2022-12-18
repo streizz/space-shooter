@@ -18,7 +18,7 @@ class Bullet(pygame.sprite.Sprite):
         self.y -= self.speed
         self.rect.y = self.y
 
-    def render(self):
+    def update(self):
         '''отрисовка одной пули'''
         self.move()
         pygame.draw.rect(self.screen, self.color, self.rect)

@@ -16,7 +16,7 @@ class Gun:
         self.mright = False
         self.mleft = False
 
-    def render(self):
+    def update(self):
         '''отрисовка пушки'''
         self.move()
         self.screen.blit(self.image, self.rect)
