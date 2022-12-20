@@ -69,4 +69,3 @@ class Game:
             ino.x = ino_width // 2 + ino_number * ino_width
             ino.rect.x = ino.x
             self.inos.add(ino)
-
