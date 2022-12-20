@@ -15,7 +15,7 @@ class Game:
         self.score = Score(screen, self.stats)
         self.create_army()
         self.guns_count_life = 3
-        self.life_image = pygame.image.load('images/life.png')
+        self.life_image = pygame.image.load('media/frames_start_menu/life.png')
 
     def check_inos(self):
         for ino in self.inos.sprites():
