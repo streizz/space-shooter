@@ -24,12 +24,16 @@ class Game:
         return True
 
     def check_on_restart(self):
-        if pygame.sprite.spritecollideany(self.gun, self.inos) or not self.check_inos():
+        if not self.inos:
+            return True
+        if not self.check_inos():
             self.guns_count_life -= 1
             return True
-        elif not self.inos:
-            return True
-
+        for ino in self.inos:
+            if pygame.sprite.collide_mask(self.gun, ino):
+                self.guns_count_life -= 1
+                return True
+        return False
     def show_life(self):
         life_rect = self.life_image.get_rect()
         for life_number in range(1, self.guns_count_life + 1):
@@ -63,9 +67,15 @@ class Game:
     def create_army(self):
         ino = Ino(self.screen)
         ino_width = ino.rect.width
-        count_ino_on_row = int((self.screen.get_width() - ino_width) // ino_width)
-        for ino_number in range(count_ino_on_row):
-            ino = Ino(self.screen)
-            ino.x = ino_width // 2 + ino_number * ino_width
-            ino.rect.x = ino.x
-            self.inos.add(ino)
+        ino_height = ino.rect.height
+        count_ino_on_row = int((self.screen.get_width() - ino_width - 10) // ino_width) - 1
+        count_row = int((self.screen.get_height() // 2.5) // ino_height)
+        for row in range(count_row):
+            y = 20 + row * (ino_height + 10)
+            for ino_number in range(count_ino_on_row):
+                ino = Ino(self.screen)
+                ino.x = ino_width // 2 + ino_number * (ino_width + 10)
+                ino.y = y
+                ino.rect.x = ino.x
+                ino.rect.y = ino.y
+                self.inos.add(ino)

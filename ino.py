@@ -5,7 +5,8 @@ class Ino(pygame.sprite.Sprite):
     def __init__(self, screen):
         '''инициализации пришельца'''
         super().__init__()
-        self.image = pygame.image.load('images/ino.png')
+        self.image = pygame.image.load('media/ino.png')
+        self.mask = pygame.mask.from_surface(self.image)
         self.screen = screen
         self.screen_rect = screen.get_rect()
         self.rect = self.image.get_rect()
@@ -23,5 +24,5 @@ class Ino(pygame.sprite.Sprite):
     def move(self):
         '''изменение позиции пушки'''
         if self.rect.right < self.screen_rect.right:
-            self.y += 1.5
+            self.y += 0.5
         self.rect.y = self.y

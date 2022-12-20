@@ -6,7 +6,8 @@ class Gun:
     def __init__(self, screen):
         '''инициализация пушки'''
         self.screen = screen
-        self.image = pygame.image.load('images/playable_ship2.png')
+        self.image = pygame.image.load('media/playable_ship2.png')
+        self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         self.rect.centerx = self.screen_rect.centerx
@@ -14,6 +15,7 @@ class Gun:
         self.rect.bottom = self.screen_rect.bottom
         self.bullets = pygame.sprite.Group()
         self.mright = False
+        self.shooting = False
         self.mleft = False
 
     def update(self):
@@ -27,9 +29,12 @@ class Gun:
             self.center += 2.5
         if self.mleft and 0 < self.rect.left:
             self.center -= 2.5
+        if self.shooting and len(self.bullets) < 15:
+            self.shoot()
         self.rect.centerx = self.center
 
     def shoot(self):
         '''функция реализует стрельбу пулями bullets'''
         bullet = Bullet(self.screen, self)
-        self.bullets.add(bullet)
+        if not pygame.sprite.spritecollideany(bullet, self.bullets):
+            self.bullets.add(bullet)
