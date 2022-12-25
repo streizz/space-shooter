@@ -1,6 +1,6 @@
 import pygame
 
-class creator:
+class Creator:
     def __init__(self):
         self.buttons = []
         self.callbacks_ = []

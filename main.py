@@ -5,7 +5,7 @@ from controls import process_events, update_display
 class start_game:
     def main(curlvl):
         pygame.init()
-        screen = pygame.display.set_mode((600, 900))
+        screen = pygame.display.set_mode((1400, 700))
         pygame.display.set_caption('Космический шутер')
         BLACK = (0, 0, 0)
         clock = pygame.time.Clock()
@@ -13,7 +13,7 @@ class start_game:
         game = Game(screen, curlvl)
         while True:
             process_events(game)
-            update_display(screen, game, BLACK)
+            update_display(screen, game, BLACK, curlvl)
             clock.tick(fps)
 
 

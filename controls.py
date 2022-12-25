@@ -22,7 +22,9 @@ def process_events(game):
                 game.gun.shooting = False
 
 
-def update_display(screen, game, background):
+def update_display(screen, game, background, curlvl):
     screen.fill(background)
+    filename = 'media/lvl' + str(curlvl) + 'bg.png'
+    screen.blit(pygame.image.load(filename).convert_alpha(), (0, 0))
     game.update()
     pygame.display.flip()
