@@ -63,8 +63,8 @@ def charupgrade():
 
     ship_upgrade()
 
-def start_lvl():
-    main.start_game.main()
+def start_lvl(lvl):
+    main.start_game.main(lvl)
 
 
 def skin_change():
@@ -87,9 +87,9 @@ def lvllist():
 
     levellisting = True
 
-    menu.add_option('Level 1 >', lambda: start_lvl(), font)
-    menu.add_option('Level 2 >', lambda: start_lvl(), font)
-    menu.add_option('Level 3 >', lambda: start_lvl(), font)
+    menu.add_option('Level 1 >', lambda: start_lvl(lvl=1), font)
+    menu.add_option('Level 2 >', lambda: start_lvl(lvl=2), font)
+    menu.add_option('Level 3 >', lambda: start_lvl(lvl=3), font)
     menu.add_option('Back >', lambda: main_menu(), font)
 
 def main_menu():

@@ -7,11 +7,12 @@ from stats import Stats
 
 
 class Game:
-    def __init__(self, screen):
+    def __init__(self, screen, curlvl):
+        self.lvl = curlvl
         self.screen = screen
         self.gun = Gun(screen)
         self.inos = pygame.sprite.Group()
-        self.stats = Stats()
+        self.stats = Stats(curlvl)
         self.score = Score(screen, self.stats)
         self.create_army()
         self.guns_count_life = 3
