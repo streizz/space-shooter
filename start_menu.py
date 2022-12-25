@@ -64,7 +64,7 @@ def charupgrade():
     ship_upgrade()
 
 def start_lvl():
-    main.start_game.main()
+    main.start_game()
 
 
 def skin_change():
