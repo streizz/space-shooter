@@ -1,6 +1,7 @@
 from pygame import *
 from btncreator import creator
 import json
+import main
 
 init()
 
@@ -62,6 +63,9 @@ def charupgrade():
 
     ship_upgrade()
 
+def start_lvl():
+    main.start_game.main()
+
 
 def skin_change():
 
@@ -77,15 +81,15 @@ def lvllist():
     menu.clearing()
 
     screen.blit(image.load(
-                        levelmaps[0]).convert_alpha(), (0, 0))
+        levelmaps[0]).convert_alpha(), (0, 0))
 
     global levellisting
 
     levellisting = True
 
-    menu.add_option('Level 1 >', lambda: start_lvl(levelmaps[0]), font)
-    menu.add_option('Level 2 >', lambda: start_lvl(levelmaps[1]), font)
-    menu.add_option('Level 3 >', lambda: start_lvl(levelmaps[2]), font)
+    menu.add_option('Level 1 >', lambda: start_lvl(), font)
+    menu.add_option('Level 2 >', lambda: start_lvl(), font)
+    menu.add_option('Level 3 >', lambda: start_lvl(), font)
     menu.add_option('Back >', lambda: main_menu(), font)
 
 def main_menu():
@@ -101,8 +105,6 @@ def main_menu():
     menu.add_option('Level list >', lambda: lvllist(), font)
     menu.add_option('Upgrade spaceship >', lambda: ship_upgrade(), font)
     menu.add_option('Quit >', exit, font)
-
-
 
 
 main_menu()
