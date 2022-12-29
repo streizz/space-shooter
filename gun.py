@@ -15,6 +15,7 @@ class Gun:
         self.rect.bottom = self.screen_rect.bottom
         self.bullets = pygame.sprite.Group()
         self.mright = False
+        self.speed = 6.5
         self.shooting = False
         self.mleft = False
 
@@ -26,10 +27,10 @@ class Gun:
     def move(self):
         '''изменение позиции пушки'''
         if self.mright and self.rect.right < self.screen_rect.right:
-            self.center += 2.5
+            self.center += self.speed
         if self.mleft and 0 < self.rect.left:
-            self.center -= 2.5
-        if self.shooting and len(self.bullets) < 15:
+            self.center -= self.speed
+        if self.shooting and len(self.bullets) < 25:
             self.shoot()
         self.rect.centerx = self.center
 

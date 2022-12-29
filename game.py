@@ -68,7 +68,7 @@ class Game:
         ino = Ino(self.screen)
         ino_width = ino.rect.width
         ino_height = ino.rect.height
-        count_ino_on_row = int((self.screen.get_width() - ino_width - 10) // ino_width) - 1
+        count_ino_on_row = int((self.screen.get_width() - ino_width - 10) // (ino_width + 5)) - 1
         count_row = int((self.screen.get_height() // 2.5) // ino_height)
         for row in range(count_row):
             y = 20 + row * (ino_height + 10)

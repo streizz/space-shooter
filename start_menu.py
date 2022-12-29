@@ -1,5 +1,5 @@
 from pygame import *
-from btncreator import creator
+from btncreator import Creator
 import json
 from main import start_game
 
@@ -28,7 +28,7 @@ font = font.SysFont('Copperplate Gothic', 50)
 
 bg = image.load("media/frames_start_menu/f1 (1).gif").convert_alpha()
 
-menu = creator()
+menu = Creator()
 
 
 def ship_upgrade():
@@ -62,6 +62,7 @@ def charupgrade():
         json.dump(charinfo, j)
 
     ship_upgrade()
+
 
 def start_lvl(lvl):
     start = start_game()

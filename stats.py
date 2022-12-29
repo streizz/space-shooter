@@ -15,6 +15,7 @@ class Stats:
             temp['stats'] = self.score
         if self.score > self.high_score:
             self.scoreupdate[f'currecordlvl{self.curlvl}'] = self.score
+            self.high_score = self.score
             with open('spaceship.json', 'w') as f:
                 json.dump(self.scoreupdate, f)
             temp['win'] = 1
