@@ -13,6 +13,7 @@ class Game:
         self.gun = Gun(screen)
         self.inos = pygame.sprite.Group()
         self.stats = Stats(curlvl)
+        self.highstats = self.stats.high_score
         self.score = Score(screen, self.stats)
         self.create_army()
         self.guns_count_life = 3
@@ -59,8 +60,6 @@ class Game:
         self.stats.score += len(collisions) * 100
 
     def restart_game(self):
-        if self.guns_count_life == 0:
-            exit()
         self.inos.empty()
         self.gun = Gun(self.screen)
         self.create_army()

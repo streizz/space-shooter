@@ -1,7 +1,7 @@
 from pygame import *
 from btncreator import creator
 import json
-import main
+from main import start_game
 
 init()
 
@@ -64,7 +64,9 @@ def charupgrade():
     ship_upgrade()
 
 def start_lvl(lvl):
-    main.start_game.main(lvl)
+    start = start_game()
+    start.main(lvl)
+    import endgame
 
 
 def skin_change():
@@ -118,11 +120,10 @@ background_time = 0
 background_delay = 85
 
 clock = time.Clock()
-running = True
-while running:
+while True:
     for event_ in event.get():
         if event_.type == QUIT:
-            running = False
+            exit()
         if event_.type == KEYDOWN:
             if not skin_changing and not levellisting:
                 if event_.key == K_UP:
