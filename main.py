@@ -18,7 +18,7 @@ class start_game:
             process_events(self.game)
             update_display(self.screen, self.game, BLACK, curlvl)
             clock.tick(fps)
-
+#заебал, закомиться уже
 
 if __name__ == '__main__':
     start_game.main()
