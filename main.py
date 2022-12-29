@@ -16,7 +16,7 @@ class start_game:
         self.game = Game(self.screen, curlvl)
         while self.game.guns_count_life:
             process_events(self.game)
-            update_display(self.screen, self.game, BLACK)
+            update_display(self.screen, self.game, BLACK, curlvl)
             clock.tick(fps)
 
 
