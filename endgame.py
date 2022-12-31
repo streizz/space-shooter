@@ -1,5 +1,5 @@
 from pygame import *
-from btncreator import creator
+from btncreator import Creator
 import json
 
 size = (600, 900)
@@ -7,7 +7,7 @@ screen = display.set_mode(size)
 init()
 font1 = font.SysFont('Copperplate Gothic', 50)
 font2 = font.SysFont('Copperplate Gothic', 80)
-menu = creator()
+menu = Creator()
 menu.clearing()
 menu.add_option('Menu ->', lambda: open_menu(), font1)
 menu.add_option('exit', lambda: newexit(), font1)
@@ -45,7 +45,6 @@ def endgame_window(win1):
         display.flip()
 
 def open_menu():
-    import start_menu
     temp['win'] = 0
     temp['stats'] = 0
 

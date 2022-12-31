@@ -65,13 +65,10 @@ def charupgrade():
 
 
 def start_lvl(lvl):
-    start = start_game()
-    start.main(lvl)
-    import endgame
+    start_game(lvl)
 
 
 def skin_change():
-
     global skin_changing
 
     skin_changing = True
