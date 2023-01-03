@@ -6,7 +6,7 @@ from controls import process_events, update_display
 def start_game(curlvl):
     pygame.init()
     pygame.display.set_caption('Космический шутер')
-    screen = pygame.display.set_mode((1400, 700))
+    screen = pygame.display.set_mode((1400, 788))
     BLACK = (0, 0, 0)
     clock = pygame.time.Clock()
     fps = 100

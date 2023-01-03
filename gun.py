@@ -15,7 +15,7 @@ class Gun:
         self.rect.bottom = self.screen_rect.bottom
         self.bullets = pygame.sprite.Group()
         self.mright = False
-        self.speed = 6.5
+        self.speed = 7.5
         self.shooting = False
         self.mleft = False
 
