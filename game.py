@@ -17,6 +17,8 @@ class Game:
         self.score = Score(screen, self.stats)
         self.count_row = 1
         self.create_army() 
+        self.count_row = 1
+        self.create_army() 
         self.guns_count_life = 3
         self.life_image = pygame.image.load('media/frames_start_menu/life.png')
 
