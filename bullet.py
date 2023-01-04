@@ -1,4 +1,5 @@
 import pygame.sprite
+import json
 
 
 class Bullet(pygame.sprite.Sprite):
@@ -8,7 +9,7 @@ class Bullet(pygame.sprite.Sprite):
         self.screen = screen
         self.rect = pygame.Rect(0, 0, 3, 10)
         self.color = 255, 200, 255
-        self.speed = 4.5
+        self.speed = 5 + (json.load(open('spaceship.json', 'r'))['curlevel'] * 1.5)
         self.rect.centerx = gun.rect.centerx
         self.rect.centery = gun.rect.centery - 50
         self.y = float(self.rect.y)

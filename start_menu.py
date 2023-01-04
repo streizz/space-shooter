@@ -15,13 +15,13 @@ ship_upgrade1 = False
 
 levellisting = False
 
+scoreissue = False
+
 charinfo = {}
 
-skins = ['skin1.png', 'skin2.png', 'skin3.png']
+skins = ['ship1.png', 'ship2.png', 'ship3.png']
 
 levelmaps = ['media/lvl1bg.png', 'media/lvl2bg.png', 'media/lvl3bg.png']
-
-counter = 0
 
 fontcreds = font.SysFont('Copperplate Gothic', 30)
 font = font.SysFont('Copperplate Gothic', 50)
@@ -42,6 +42,8 @@ def ship_upgrade():
         global charinfo
 
         charinfo = json.load(j)
+        global counter
+        counter = charinfo['counterskin']
 
     menu.add_option(
         f'Upgrade ship > Current level : {charinfo["curlevel"]}', lambda: charupgrade(), font)
@@ -56,22 +58,32 @@ def ship_upgrade():
 
 
 def charupgrade():
-    with open('spaceship.json', 'w', encoding='utf-8') as j:
-        global charinfo
-        charinfo['curlevel'] += 1
-        json.dump(charinfo, j)
+    if charinfo['currecordlvl1'] >= 13000 and charinfo['curlevel'] == 1:
+        with open('spaceship.json', 'w', encoding='utf-8') as j:
+            charinfo['curlevel'] += 1
+            json.dump(charinfo, j)
+    elif charinfo['currecordlvl2'] >= 13000 and charinfo['curlevel'] == 2:
+        with open('spaceship.json', 'w', encoding='utf-8') as j:
+            charinfo['curlevel'] += 1
+            json.dump(charinfo, j)
+    elif charinfo['currecordlvl3'] >= 13000 and charinfo['curlevel'] == 3:
+        with open('spaceship.json', 'w', encoding='utf-8') as j:
+            charinfo['curlevel'] += 1
+            json.dump(charinfo, j)
+    else:
+        global error1, error_rect, scoreissue
+        error1 = font.render(f'Error! Try better on level {charinfo["curlevel"]}.', True, (255, 255, 255))
+        error_rect = error1.get_rect()
+        scoreissue = True
 
     ship_upgrade()
 
 
 def start_lvl(lvl):
-    start = start_game()
-    start.main(lvl)
-    import endgame
+    start_game(lvl)
 
 
 def skin_change():
-
     global skin_changing
 
     skin_changing = True
@@ -141,6 +153,7 @@ while True:
                 if event_.key == K_UP:
                     with open('spaceship.json', 'w', encoding='utf-8') as j:
                         charinfo['curskin'] = f'media/playable_{skins[counter % 3]}'
+                        charinfo['counterskin'] = counter % 3
                         json.dump(charinfo, j)
                     skin_changing = False
             elif levellisting:
@@ -174,7 +187,10 @@ while True:
         screen.blit(image.load(
             f"media/background_upgrading.png").convert_alpha(), (0, 0))
         screen.blit(image.load(
-            f'media/{skins[(counter) % 3]}').convert_alpha(), (900, 450))
+            f'media/{skins[counter % 3]}').convert_alpha(), (900, 450))
+        if scoreissue:
+            error_rect.topleft = (20, 700)
+            screen.blit(error1, error_rect)
 
     elif levellisting:
         if counter > 2:

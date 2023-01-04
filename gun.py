@@ -1,4 +1,5 @@
 import pygame
+import json
 from bullet import Bullet
 
 
@@ -6,7 +7,7 @@ class Gun:
     def __init__(self, screen):
         '''инициализация пушки'''
         self.screen = screen
-        self.image = pygame.image.load('media/playable_ship2.png')
+        self.image = pygame.image.load(json.load(open('spaceship.json', 'r'))["curskin"])
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
@@ -15,7 +16,7 @@ class Gun:
         self.rect.bottom = self.screen_rect.bottom
         self.bullets = pygame.sprite.Group()
         self.mright = False
-        self.speed = 6.5
+        self.speed = 5 + (json.load(open('spaceship.json', 'r'))['curlevel'] * 1.5)
         self.shooting = False
         self.mleft = False
 
