@@ -2,6 +2,7 @@ from pygame import *
 from btncreator import Creator
 import json
 from main import start_game
+from sys import exit
 
 init()
 
@@ -119,7 +120,7 @@ def main_menu():
 
     menu.add_option('Level list >', lambda: lvllist(), font)
     menu.add_option('Upgrade spaceship >', lambda: ship_upgrade(), font)
-    menu.add_option('Quit >', exit, font)
+    menu.add_option('Quit >', lambda: exit(), font)
 
 
 main_menu()

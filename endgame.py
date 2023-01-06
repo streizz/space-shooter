@@ -2,6 +2,7 @@ from pygame import *
 from btncreator import Creator
 from importlib import reload
 import json
+from sys import exit
 
 class End:
     def __init__(self):
