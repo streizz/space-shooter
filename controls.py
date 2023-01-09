@@ -11,14 +11,14 @@ def process_events(game):
                 game.gun.mright = True
             elif event.key == pygame.K_LEFT:
                 game.gun.mleft = True
-            elif event.key == pygame.K_UP:
+            elif event.key == pygame.K_SPACE:
                 game.gun.shooting = True
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 game.gun.mright = False
             elif event.key == pygame.K_LEFT:
                 game.gun.mleft = False
-            elif event.key == pygame.K_UP:
+            elif event.key == pygame.K_SPACE:
                 game.gun.shooting = False
 
 
