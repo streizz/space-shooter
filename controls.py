@@ -1,11 +1,12 @@
 import pygame
+import sys
 
 
 def process_events(game):
     '''обрабатываем события'''
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            exit()
+            sys.exit()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 game.gun.mright = True
