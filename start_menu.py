@@ -24,8 +24,8 @@ skins = ['ship1.png', 'ship2.png', 'ship3.png']
 
 levelmaps = ['media/lvl1bg.png', 'media/lvl2bg.png', 'media/lvl3bg.png']
 
-fontcreds = font.SysFont('Copperplate Gothic', 30)
-font = font.SysFont('Copperplate Gothic', 50)
+fontcreds = font.Font('copperplategothic_bold.ttf', 30)
+font = font.Font('copperplategothic_bold.ttf', 50)
 
 bg = image.load("media/frames_start_menu/f1 (1).gif").convert_alpha()
 
